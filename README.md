@@ -1,7 +1,7 @@
 CumulusClips Plugin : RawSource
 ===============================
 
-Keep raw video file in **UPLOAD_PATH + '/raw'** folder after the encoding process.
+Keep raw video file in *UPLOAD_PATH + '/raw'* folder after the encoding process.
 
 # Install
 
