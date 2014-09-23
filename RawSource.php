@@ -28,7 +28,7 @@ class RawSource {
       $src_video = UPLOAD_PATH . '/temp/' . $video->filename . '.' . $video->original_extension;
       $raw_video = UPLOAD_PATH . '/raw/' . $video->filename . '.' . $video->original_extension;
 
-      Filesystem::Copy($src_video, $raw_video);
+      copy($src_video, $raw_video);
     }
 }
 ?>
