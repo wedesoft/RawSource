@@ -1,25 +1,19 @@
 <?php
-class RawSource {
+class RawSource extends PluginAbstract {
+
+    public $name='RawSource';
+    public $author='Alexandre Girard';
+    public $description='Keep uploaded video file in UPLOAD_PATH/raw/ folder'
+    public $version='1.2.0';
+    public $url='http://alexgirard.com/';
 
     static function Load() {
-        Plugin::Attach ( 'encode.before_flv_encode' , array( __CLASS__ , 'KeepRawFile' ) );
+      Plugin::attachEvent('encode.before_flv_encode', array(__CLASS__, 'KeepRawFile'));
     }
 
-    static function Info() {
-        return array (
-            'name'    => 'RawSource',
-            'author'  => 'Alexandre Girard',
-            'version' => '1.0.0',
-            'site'    => 'http://alexgirard.com/',
-            'notes'   => 'Keep uploaded video file in UPLOAD_PATH/raw/ folder'
-        );
-    }
+    static function Install() {}
 
-    static function Install() {
-    }
-
-    static function Uninstall() {
-    }
+    static function Uninstall() {}
 
     static function KeepRawFile() {
       App::LoadClass ('Video');
@@ -29,6 +23,12 @@ class RawSource {
       $raw_video = UPLOAD_PATH . '/raw/' . $video->filename . '.' . $video->original_extension;
 
       copy($src_video, $raw_video);
+    }
+
+    public function settings() {}
+
+    public function getSystemName() {
+      return get_class($this)
     }
 }
 ?>
